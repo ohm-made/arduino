@@ -27,7 +27,7 @@ constexpr char INDEX[] = R"=====(
     <body>
         <h1>Ohm-Led configuration</h1>
         <p>Use this page to configure your Ohm-Led device.</p>
-        <form action="/v1/configuration/" method="post">
+        <form action="/configuration/" method="post">
             <div>
                 <label for="name">Name: </label>
                 <input type="text" name="name" id="name" value="%s" required>
