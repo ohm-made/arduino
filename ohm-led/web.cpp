@@ -86,6 +86,21 @@ void handleSetConfiguration()
     ESP.restart();
 }
 
+void handleGetInfo()
+{
+    StaticJsonDocument<256> json;
+
+    json["name"] = config.name;
+    json["num-leds"] = config.num_leds;
+    json["fps"] = config.fps;
+
+    String body;
+    serializeJsonPretty(json, body);
+    body += '\n';
+
+    server.send(200, "application/json", body);
+}
+
 void handleGetStateWithStatusCode(int statusCode)
 {
     StaticJsonDocument<256> json;
@@ -167,6 +182,7 @@ void startWebServer(uint16_t port)
     server.on("/configuration/", HTTP_PUT, handleSetConfiguration);
 
     // API
+    server.on("/v1/info/", HTTP_GET, handleGetInfo);
     server.on("/v1/state/", HTTP_GET, handleGetState);
     server.on("/v1/state/", HTTP_PUT, handleSetState);
     server.onNotFound(handleNotFound);
