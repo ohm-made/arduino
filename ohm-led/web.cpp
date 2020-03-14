@@ -11,7 +11,7 @@ ESP8266WebServer server;
 
 void handleGetIndex()
 {
-    server.sendHeader("Location", String("/v1/configuration/"), true);
+    server.sendHeader("Location", String("/configuration/"), true);
     server.send(302, "text/plain", "");
 }
 
@@ -160,10 +160,13 @@ void handleNotFound()
 
 void startWebServer(uint16_t port)
 {
+    // Web
     server.on("/", HTTP_GET, handleGetIndex);
-    server.on("/v1/configuration/", HTTP_GET, handleGetConfiguration);
-    server.on("/v1/configuration/", HTTP_POST, handleSetConfiguration);
-    server.on("/v1/configuration/", HTTP_PUT, handleSetConfiguration);
+    server.on("/configuration/", HTTP_GET, handleGetConfiguration);
+    server.on("/configuration/", HTTP_POST, handleSetConfiguration);
+    server.on("/configuration/", HTTP_PUT, handleSetConfiguration);
+
+    // API
     server.on("/v1/state/", HTTP_GET, handleGetState);
     server.on("/v1/state/", HTTP_PUT, handleSetState);
     server.onNotFound(handleNotFound);
