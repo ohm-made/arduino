@@ -254,7 +254,15 @@ void balls()
     for (int i = 0; i < state.num_balls; i++)
     {
         const int position = state.easeTime(state.easing, round(millis() * ballsInfo[i].multiplier) + ballsInfo[i].timeOffset, config.num_leds - 1);
-        leds[position] = blend(ballsInfo[i].color, leds[position], 0.5);
+
+        if (leds[position] == CRGB(CRGB::Black))
+        {
+            leds[position] = ballsInfo[i].color;
+        }
+        else
+        {
+            leds[position] = blend(ballsInfo[i].color, leds[position], 0.5);
+        }
     }
 
     FastLED.show();
