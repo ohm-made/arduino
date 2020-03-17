@@ -11,10 +11,11 @@ enum StateMode
     StateMode_Off = 0,
     StateMode_On = 1,
     StateMode_Pulse = 2,
-    StateMode_Rainbow = 3,
-    StateMode_Balls = 4,
-    StateMode_KnightRider = 5,
-    StateMode_Fire = 6,
+    StateMode_Colorloop = 3,
+    StateMode_Rainbow = 4,
+    StateMode_Balls = 5,
+    StateMode_KnightRider = 6,
+    StateMode_Fire = 7,
     StateMode_Count,
 };
 

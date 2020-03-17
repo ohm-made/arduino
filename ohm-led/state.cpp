@@ -15,6 +15,7 @@ const std::map<StateMode, const char *> modeNames = {
     {StateMode_Off, "off"},
     {StateMode_On, "on"},
     {StateMode_Pulse, "pulse"},
+    {StateMode_Colorloop, "colorloop"},
     {StateMode_Rainbow, "rainbow"},
     {StateMode_Balls, "balls"},
     {StateMode_KnightRider, "knight-rider"},
@@ -216,6 +217,13 @@ void pulse()
     FastLED.show();
 }
 
+void colorloop()
+{
+    const int hue = state.easeTime(state.easing, millis(), 255);
+
+    FastLED.showColor(CHSV(hue, state.saturation, state.value));
+}
+
 void rainbow()
 {
     fill_rainbow(leds, config.num_leds, 0, 255 / config.num_leds);
@@ -351,6 +359,9 @@ void stateLoop()
         break;
     case StateMode_Pulse:
         pulse();
+        break;
+    case StateMode_Colorloop:
+        colorloop();
         break;
     case StateMode_Rainbow:
         rainbow();
