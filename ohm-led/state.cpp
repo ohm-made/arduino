@@ -175,7 +175,7 @@ CRGB leds[MAX_LEDS];
 
 void setupState()
 {
-    FastLED.addLeds<WS2812, LEDS_DATA_PIN, GRB>(leds, config.num_leds);
+    FastLED.addLeds<WS2812, LEDS_DATA_PIN, GRB>(leds, config.num_leds).setCorrection(TypicalLEDStrip);
     FastLED.setBrightness(255);
 }
 
