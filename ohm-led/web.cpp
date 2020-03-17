@@ -91,6 +91,7 @@ void handleGetInfo()
     StaticJsonDocument<256> json;
 
     json["name"] = config.name;
+    json["version"] = VERSION;
     json["num-leds"] = config.num_leds;
     json["fps"] = config.fps;
 

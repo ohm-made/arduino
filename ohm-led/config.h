@@ -3,6 +3,9 @@
 #include <cstdint>
 #include <cstring>
 
+// The version.
+#define VERSION "0.0.1"
+
 // The maximum support number of leds.
 #define MAX_LEDS 128
 
