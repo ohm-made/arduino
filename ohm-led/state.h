@@ -13,9 +13,8 @@ enum StateMode
     StateMode_Pulse = 2,
     StateMode_Colorloop = 3,
     StateMode_Rainbow = 4,
-    StateMode_Balls = 5,
-    StateMode_KnightRider = 6,
-    StateMode_Fire = 7,
+    StateMode_KnightRider = 5,
+    StateMode_Fire = 6,
     StateMode_Count,
 };
 
@@ -42,7 +41,6 @@ public:
     uint8_t value = 255;
     Easing easing = EaseInOutQuad;
     uint32_t period = 5000;
-    uint8_t num_balls = 1;
     uint8_t fire_cooling = 40;
     uint8_t fire_sparking = 80;
 };
