@@ -218,7 +218,9 @@ void colorloop()
 
 void rainbow()
 {
-    fill_rainbow(leds, config.num_leds, 0, 255 / config.num_leds);
+    const int hue = state.easeTime(state.easing, millis(), 255);
+
+    fill_rainbow(leds, config.num_leds, hue, 255 / config.num_leds);
 
     FastLED.show();
 }
