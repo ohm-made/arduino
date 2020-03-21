@@ -19,7 +19,7 @@ void handleGetConfiguration()
 {
     // Keep some room for the injected values.
     char tmp[sizeof(INDEX) + 256];
-    snprintf(tmp, sizeof(tmp), INDEX, config.name, config.ssid, MAX_LEDS, config.num_leds);
+    snprintf(tmp, sizeof(tmp), INDEX, config.name, config.ssid, MAX_LEDS, config.num_leds, config.voltage, config.milliamps);
     server.send(200, "text/html", tmp);
 }
 
@@ -45,6 +45,8 @@ void handleSetConfiguration()
     const String ssid = server.arg("ssid");
     const String passphrase = server.arg("passphrase");
     const uint16_t num_leds = atoi(server.arg("num_leds").c_str());
+    const uint16_t voltage = atoi(server.arg("voltage").c_str());
+    const uint16_t milliamps = atoi(server.arg("milliamps").c_str());
 
     if (name.length() >= sizeof(config.name))
     {
@@ -83,6 +85,8 @@ void handleSetConfiguration()
     }
 
     config.num_leds = num_leds;
+    config.voltage = voltage;
+    config.milliamps = milliamps;
 
     if (!config.Save()) {
         server.send(500, "text/plain", "Failed to save configuration.\n");

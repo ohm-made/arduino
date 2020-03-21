@@ -23,6 +23,8 @@ public:
     static const uint16_t DEFAULT_HTTP_PORT = 80;
     static const uint16_t DEFAULT_NUM_LEDS = 16;
     static const int DEFAULT_FPS = 120;
+    static const uint16_t DEFAULT_VOLTAGE = 5;
+    static const uint16_t DEFAULT_MILLIAMPS = 0;
 
     Config() = default;
     bool Load();
@@ -47,6 +49,8 @@ public:
     uint16_t http_port = DEFAULT_HTTP_PORT;
     uint16_t num_leds = DEFAULT_NUM_LEDS;
     int fps = DEFAULT_FPS;
+    uint16_t voltage = DEFAULT_VOLTAGE;
+    uint16_t milliamps = DEFAULT_MILLIAMPS;
 
     bool hasName() const
     {

@@ -177,6 +177,13 @@ void setupState()
 {
     FastLED.addLeds<WS2812, LEDS_DATA_PIN, GRB>(leds, config.num_leds).setCorrection(TypicalLEDStrip);
     FastLED.setBrightness(255);
+
+    if ((config.milliamps > 0) && (config.voltage > 0)) {
+        Serial.printf("Both voltage and milliamps were set: limiting power consumption to %dW.\n", (config.voltage * config.milliamps) / 1000);
+        FastLED.setMaxPowerInVoltsAndMilliamps(config.voltage, config.milliamps);
+    } else {
+        Serial.println("Not limiting power consumption.");
+    }
 }
 
 int State::easeTime(Easing easing, int time, int mult)
