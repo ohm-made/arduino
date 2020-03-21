@@ -4,7 +4,7 @@
 #include <cstring>
 
 // The version.
-#define VERSION "0.0.1"
+#define VERSION "0.0.2"
 
 // The maximum support number of leds.
 #define MAX_LEDS 128
