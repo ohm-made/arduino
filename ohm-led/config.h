@@ -7,7 +7,7 @@
 #define VERSION "0.0.2"
 
 // The maximum support number of leds.
-#define MAX_LEDS 128
+#define MAX_LEDS 1000
 
 // PIN configuration.
 #define LEDS_DATA_PIN 1
