@@ -46,10 +46,10 @@ constexpr char INDEX[] = R"=====(
             </div>
             <div>
                 <label for="voltage">Voltage (V): </label>
-                <input type="number" name="voltage" id="voltage" min="1" value="%d" required>
+                <input type="number" name="voltage" id="voltage" min="1" value="%d" required readonly>
             </div>
             <div>
-                <label for="milliamps">Milliamps (mA): </label>
+                <label for="milliamps">Power supply current (mA): </label>
                 <input type="number" name="milliamps" id="milliamps" min="0" value="%d" required>
             </div>
             <div>

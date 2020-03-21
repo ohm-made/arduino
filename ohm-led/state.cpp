@@ -179,10 +179,18 @@ void setupState()
     FastLED.setBrightness(255);
 
     if ((config.milliamps > 0) && (config.voltage > 0)) {
-        Serial.printf("Both voltage and milliamps were set: limiting power consumption to %dW.\n", (config.voltage * config.milliamps) / 1000);
-        FastLED.setMaxPowerInVoltsAndMilliamps(config.voltage, config.milliamps);
+        uint16_t milliamps = config.milliamps;
+
+        if (config.milliamps < config.MIN_SYSTEM_MILLIAMPS) {
+            milliamps = 0;
+        }
+
+        milliamps -= config.MIN_SYSTEM_MILLIAMPS;
+
+        Serial.printf("Both voltage and milliamps were set: limiting LED power consumption to %dW.\n", (config.voltage * milliamps) / 1000);
+        FastLED.setMaxPowerInVoltsAndMilliamps(config.voltage, milliamps);
     } else {
-        Serial.println("Not limiting power consumption.");
+        Serial.println("Not limiting power consumption. Careful as this can be dangerous if you don't provide enough current!");
     }
 }
 

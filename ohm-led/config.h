@@ -25,6 +25,7 @@ public:
     static const int DEFAULT_FPS = 120;
     static const uint16_t DEFAULT_VOLTAGE = 5;
     static const uint16_t DEFAULT_MILLIAMPS = 0;
+    static const uint16_t MIN_SYSTEM_MILLIAMPS = 500;
 
     Config() = default;
     bool Load();
