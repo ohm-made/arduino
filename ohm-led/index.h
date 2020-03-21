@@ -38,7 +38,7 @@ constexpr char INDEX[] = R"=====(
             </div>
             <div>
                 <label for="passphrase">Passphrase: </label>
-                <input type="password" name="passphrase" id="passphrase" required>
+                <input type="password" name="passphrase" id="passphrase">
             </div>
             <div>
                 <label for="num_leds">Number of LEDs: </label>

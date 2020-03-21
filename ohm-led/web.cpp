@@ -70,9 +70,18 @@ void handleSetConfiguration()
         return;
     }
 
+    if (ssid.length() == 0) {
+        server.send(500, "text/plain", "SSID cannot be empty");
+        return;
+    }
+
     snprintf(config.name, sizeof(config.name), name.c_str());
     snprintf(config.ssid, sizeof(config.ssid), ssid.c_str());
-    snprintf(config.passphrase, sizeof(config.passphrase), passphrase.c_str());
+
+    if (passphrase.length() > 0) {
+        snprintf(config.passphrase, sizeof(config.passphrase), passphrase.c_str());
+    }
+
     config.num_leds = num_leds;
 
     if (!config.Save()) {
